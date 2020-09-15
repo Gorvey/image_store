@@ -14,14 +14,11 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@v0.6.1"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GIT_MERGE_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_METHOD: "squash"
-          MERGE_COMMIT_MESSAGE: "pull-request-description"
-          MERGE_FORKS: "false"
-          MERGE_RETRIES: "2"
-          MERGE_RETRY_SLEEP: "10000"
-          UPDATE_METHOD: "rebase"
+       - name: merge a pull request
+         uses: sudo-bot/action-pull-request-merge@v1.1.1
+         with:
+           github-token: ${{ secrets.GITHUB_TOKEN }}
+           number: ${{ github.event.pull_request.number }}
+           allowed-usernames-regex: ^[ImgBot]$
+           filter-label: merge-it
+       
