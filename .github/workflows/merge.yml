@@ -19,6 +19,6 @@ jobs:
          with:
            github-token: ${{ secrets.GIT_MERGE_TOKEN }}
            number: ${{ github.event.pull_request.number }}
-           allowed-usernames-regex: ^[ImgBot]$
+           allowed-usernames-regex: ^[ImgBot]
            filter-label: merge-it
        
